@@ -30,6 +30,7 @@
               "includePaths": [
                 "src/styles/_variables.scss"
               ]
+            
             },
             "scripts": [],
             "es5BrowserSupport": true
