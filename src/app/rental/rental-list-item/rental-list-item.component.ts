@@ -12,7 +12,6 @@ export class RentalListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    alert("lic");    
   }
 
 }

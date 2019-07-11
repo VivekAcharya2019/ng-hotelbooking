@@ -13,7 +13,6 @@ export class RentalListComponent implements OnInit {
   constructor(private rentalService:RentalService) { }
 
   ngOnInit() {
-    alert("lc");
     const rentalObservable = this.rentalService.GetRentals();
     rentalObservable.subscribe(
       (rentals:Rental[])=>{
