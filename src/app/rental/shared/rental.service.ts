@@ -60,7 +60,7 @@ private rentals:Rental[]=[
     ];
  
     public GetRentals():Observable<Rental[]>{
-      const rentalObservable: Observable<Rental[]> = new Observable((observer)=>{
+      return new Observable((observer)=>{
         setTimeout(() => {
           observer.next(this.rentals);
         }, 1000);
@@ -71,7 +71,17 @@ private rentals:Rental[]=[
           observer.complete();
         }, 3000);
       });
+    }
 
-        return rentalObservable;
+    public getRantalById(rentalId:string): Observable<Rental>{
+      return new Observable((observer)=>{
+        const foundRental = this.rentals.find((rental)=>{
+          return rental.id==rentalId
+        });
+
+        setTimeout(() => {
+          observer.next(foundRental);
+        }, 3000);
+      })
     }
 }
