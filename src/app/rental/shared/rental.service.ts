@@ -1,87 +1,43 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, observable} from 'rxjs';
 import {Rental} from './rental.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class RentalService{
-private rentals:Rental[]=[
-    {
-      id:"1",
-      title:"My villa",
-      city: "Bangalore",
-      street:"Ecity",
-      category:"Apartement",
-      image:"http://via.placeholder.com/350x250",
-      bedrooms:2,
-      desciption:"Nice apartement",
-      dailyRate:30,
-      shared:false,
-      createdAt:"01/01/2019"
-    },
-    {
-      id:"2",
-      title:"My villa",
-      city: "Bangalore",
-      street:"Ecity",
-      category:"Apartement",
-      image:"http://via.placeholder.com/350x250",
-      bedrooms:2,
-      desciption:"Nice apartement",
-      dailyRate:30,
-      shared:false,
-      createdAt:"01/01/2019"
-    },
-    {
-      id:"3",
-      title:"My villa",
-      city: "Bangalore",
-      street:"Ecity",
-      category:"Apartement",
-      image:"http://via.placeholder.com/350x250",
-      bedrooms:2,
-      desciption:"Nice apartement",
-      dailyRate:30,
-      shared:false,
-      createdAt:"01/01/2019"
-    },
-    {
-      id:"4",
-      title:"My villa",
-      city: "Bangalore",
-      street:"Ecity",
-      category:"Apartement",
-      image:"http://via.placeholder.com/350x250",
-      bedrooms:2,
-      desciption:"Nice apartement",
-      dailyRate:30,
-      shared:false,
-      createdAt:"01/01/2019"
-    }
-    ];
  
-    public GetRentals():Observable<Rental[]>{
-      return new Observable((observer)=>{
-        setTimeout(() => {
-          observer.next(this.rentals);
-        }, 1000);
-        setTimeout(() => {
-          observer.error("Error");
-        }, 2000);
-        setTimeout(() => {
-          observer.complete();
-        }, 3000);
-      });
+  constructor(private http:HttpClient){
+
+  }
+    public GetRentals():Observable<any>{
+      return this.http.get('/api/v1/rentals');
     }
 
-    public getRantalById(rentalId:string): Observable<Rental>{
-      return new Observable((observer)=>{
-        const foundRental = this.rentals.find((rental)=>{
-          return rental.id==rentalId
-        });
+    public getRantalById(rentalId:string): Observable<any>{
+      return this.http.get('/api/v1/rentals/'+rentalId);
+      // return new Observable((observer)=>{
+      //   const foundRental = this.http.get('/api/v1/rentals/'+rentalId);
 
-        setTimeout(() => {
-          observer.next(foundRental);
-        }, 3000);
-      })
+      //   if(foundRental){
+      //     observer.next(foundRental);
+      //   }
+      //   else{
+      //     observer.error("error");
+      //   }
+        
+      // });
+
+      // return new Observable((observer)=>{
+      //   const foundRental = this.rentals.find((rental)=>{
+      //     return rental.id==rentalId
+      //   });
+
+      //   setTimeout(() => {
+      //     observer.next(foundRental);
+      //   }, 3000);
+      // }
+    // {
+    //  return this.http.get('/api/v1/rentals/'+rentalId);
+    // }
     }
 }
