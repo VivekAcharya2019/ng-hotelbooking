@@ -6,7 +6,7 @@ import { Rental } from '../shared/rental.model';
 @Component({
   selector: 'ng-rental-detail',
   templateUrl: './rental-detail.component.html',
-  styleUrls: ['./rental-detail.component.css','./rental-detail.component.scss']
+  styleUrls: ['./rental-detail.component.css']
 })
 export class RentalDetailComponent implements OnInit {
 
