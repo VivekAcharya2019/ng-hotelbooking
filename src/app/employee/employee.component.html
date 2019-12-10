@@ -1,0 +1,12 @@
+<div *ngIf="employees"> 
+  Employee Details
+
+<div  *ngFor="let employee of employees"> 
+  <ng-employee-list [emp]="employee" ></ng-employee-list>
+  </div>
+</div>
+<select >
+  <option *ngFor="let emp of employees">{{emp.ID}}</option>
+</select>
+
+<h1 *ngIf="!employees">Loading...</h1>

@@ -1,3 +1,19 @@
-<p>
+<p [style.background-color]="backgroundColor" [style.color]="foregroundColor">
   temp works!
 </p>
+
+<p [ngStyle]="{'color': 'red'}"> I Read in Red</p>
+
+<p [ngStyle]="{ 
+  'color': colorName,
+  'font-weight':fontWeight,
+  'borderBottom': borderStyle
+}">
+Demo for attribute directive ngStyle
+</p> 
+
+first name : <input [(ngModel)]='firstName'>
+<br/><br/>
+last name: <input [(ngModel)]='lastName' (onChange)='getFullname()'>
+<br/><br/> 
+Full Name: <label >{{fullName}}</label>
